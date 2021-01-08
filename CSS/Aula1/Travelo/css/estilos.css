@@ -1,0 +1,39 @@
+/* Fonte */
+@font-face {
+    src: url('../fonte/Texturina-VariableFont_opsz\,wght.ttf');
+    font-family: fontePadrao;
+}
+
+/* Padronizar todas tags */
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    outline: none;
+    font-family: Roboto;
+}
+
+/* Topo */
+header {
+    background-color: #bfb7e4;
+    display: flex;
+}
+
+header img {
+    margin: 10px;
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+    transition: 100ms;
+}
+
+/* Rodapé */
+footer {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 12px;
+}

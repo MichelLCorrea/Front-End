@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Querie</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .panel {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        @media screen and (max-width: 600px) {
+            .panel {
+                background-color: indigo;
+            }
+        }
+        @media screen and (min-width: 601px){
+            .panel {
+                background-color: rgb(0, 255, 0);
+            }
+        }
+
+        @media screen and (min-width: 920px) {
+            .panel {
+                background-color: blue;
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            .panel {
+                background-color: red;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="panel"></div>
+    
+</body>
+</html>

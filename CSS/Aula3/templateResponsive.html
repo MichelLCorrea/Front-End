@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Responsive</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: red;
+            width: 100%;
+            height: 100px;
+        }
+
+        .spotlight {
+            background-color: yellow;
+            width: 100%;
+            min-height: 350px;
+            padding: 10px;
+        }
+
+        .panel1 {
+            background-color: orange;
+            width: 100%;
+            min-height: 330px;
+        }
+
+        .content {
+            background-color: blue;
+            width: 100%;
+            padding: 10px 10px;
+            min-height: 370px;
+        }
+
+        .section {
+            background-color: mediumspringgreen;
+            width: 100%;
+            min-height: 330px;
+            margin: 10px 0;
+        }
+
+        .footer {
+            background-color: green;
+            width: 100%;
+            height: 70px;
+        }
+
+        @media screen and (min-width: 750px) {
+            .panel1 {
+                width: 60%;
+                margin: 0 auto;
+            }
+
+            .section {
+                width: calc(50% - 20px);
+                float: left;
+                margin: 10px;
+            }
+            
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="header"></div>
+
+        <div class="spotlight">
+            <div class="panel1"></div>
+        </div>
+
+        <div class="content">
+            <div class="section"></div>
+            <div class="section"></div>
+        </div>
+
+        <div class="footer"></div>
+
+    </div>
+    
+</body>
+</html>

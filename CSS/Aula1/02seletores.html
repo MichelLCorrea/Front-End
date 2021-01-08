@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 - Seletores</title>
+
+    <style>
+
+        /*div p {
+            font-style: italic;
+        }*/
+
+        .principal > div > p {
+            color: red;
+        } 
+
+        .principal > p::after {
+            content: "Seletor AFTER";
+        }
+
+        .principal > p::before {
+            content: "Seletor BEFORE";
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            border: 1px solid red;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <p>Texto fora das DIVs</p>
+
+    <div class="principal">
+        <p> - Texto dentro da DIV - </p>
+
+        <div>
+            <p>Texto dentro da outra DIV</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <form>
+
+        <input type="text" placeholder="Nome">
+
+        <input type="password" placeholder="Senha">
+
+        <input type="submit" value="Enviar">
+
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 - Exercicio Página Pessoal</title>
+
+    <style>
+
+        * {
+            font-family: sans-serif;
+        }
+
+        .nav {
+            color: #fff;
+            text-decoration: none;
+            background-color: rgb(223, 15, 15);
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .nav:hover{
+            background-color: rgb(235, 126, 23);
+        }
+
+        #pg1 > h1 {
+            font-size: 50px;
+        }
+
+        #pg1 > img {
+            width: 400px;
+            margin-left: 80px;
+            margin-top: 80px;
+        }
+
+        #pg2 > h2 {
+            font-size: 50px;
+            margin-top: 170px;
+            margin-left: 50px;
+        }
+
+        #pg2 > p {
+            font-size: 30px;
+            margin-top: 100px;
+            margin-left: 50px;
+        }
+
+        #contato {
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #facebook,
+        #github,
+        #instagram,
+        #linkedin {
+            width: 200px;
+            margin: 20px;
+        }
+
+        div{
+            /*border: 1px solid red;*/
+            margin-bottom: 10px;
+            height: 800px;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        nav {
+            position: fixed;
+            width: 1330px;
+            display: flex;
+            justify-content: center;
+            border: 1px solid black;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <nav>
+        <a class="nav" href="#pg1">Início</a>
+        <a class="nav" href="#pg2">Sobre mim</a>
+        <a class="nav" href="#pg3">Contato</a>
+    </nav>
+    <br>
+    <br>
+    <br>
+
+    <div id="pg1">
+        <h1>Michel Luiz Corrêa</h1>
+        <img src="portfolio.png" alt="">
+    </div>
+
+
+    <div id="pg2">
+        <h2>Um pouco sobre mim</h2>
+        
+        <p>Olá, meu nome é Michel Luiz Corrêa! <br>
+            Nasci e fui criado na cidade de Timbó. <br>
+            <br>
+            Não tenho nenhuma experiencia em <br>
+            programação, porém quero me dedicar <br>
+            ao maximo para me tornar um bom <br>
+            programador.</p>
+
+    </div>
+
+
+    <div id="pg3">
+        <h2>Contato</h2>
+
+        <div id="contato">
+            <a href=""><img id="facebook" src="facebook.png" alt=""></a>
+            <a href=""><img id="github" src="github-sign.png" alt=""></a>
+            <a href=""><img id="instagram" src="instagram.png" alt=""></a>
+            <a href=""><img id="linkedin" src="linkedin.png" alt=""></a>
+        </div>    
+    </div>
+    
+</body>
+</html>

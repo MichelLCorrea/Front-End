@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto 01</title>
+
+    <!-- Fonte personalizada -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/grande.css" media="(min-width: 1200px)">
+    <link rel="stylesheet" href="css/padrao.css" media="(min-width: 501px) and (max-width: 1199px)">
+    <link rel="stylesheet" href="css/mobile.css" media="(max-width: 500px)">
+
+    <!-- Fotorama -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+
+
+</head>
+<body>
+    
+    <!-- Topo -->
+    <header>
+
+        <img src="imagens/logo.png" alt="Logo">
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="blog.html">Blog</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <!-- Banner -->
+    <div class="fotorama" data-loop="true"  data-autoplay="true">
+        <img src="imagens/banner/banner1.png" alt="Banner 1">
+        <img src="imagens/banner/banner2.png" alt="Banner 2">
+        <img src="imagens/banner/banner3.png" alt="Banner 3">
+    </div>
+
+    <!-- Conteúdo principal --> 
+    <main>
+
+        <!-- Sessão de pacotes -->
+        <section class="pacotes">
+            <ul>
+                <li>
+                    <img src="imagens/lugares/lugar1.png" alt="Ponte">
+                    <p>São Francisco</p>
+                </li>
+                <li>
+                    <img src="imagens/lugares/lugar2.png" alt="Ilha">
+                    <p>Ilha do Paraíso</p>
+                </li>
+                <li>
+                    <img src="imagens/lugares/lugar3.png" alt="">
+                    <p>London Bridge</p>
+                </li>
+                <li>
+                    <img src="imagens/lugares/lugar4.png" alt="">
+                    <p>Praia do Havaí</p>
+                </li>
+                <li>
+                    <img src="imagens/lugares/lugar5.png" alt="">
+                    <p>Grécia</p>
+                </li>
+                <li>
+                    <img src="imagens/lugares/lugar6.png" alt="">
+                    <p>Cancún</p>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>Copyryght 2020 | Michel Luiz Corrêa</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&family=Open+Sans:wght@300;400;700;800&family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <title>Login</title>
+
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            width: 360px;
+            height: 270px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .card form {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+        }
+
+        input,button {
+            height: 30px;
+        }
+
+        input {
+            font-size: 20px;
+            padding: 5px 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #6d6d6d;
+            outline-width: 1px;
+        }
+
+        button {
+            font-size: 16px;
+            margin-top: 10px;
+            background-color: rgb(13, 76, 214);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.1s ease-in-out;
+        }
+
+        button:active,
+        button:hover {
+            background-color: rgb(23, 71, 160);
+            border: none;
+            outline: none;
+            transform: scale(1.03);
+        }
+
+        .card form a {
+            text-decoration: none;
+            color: #333333;
+        }
+
+        .card > header h1 {
+            font-family: "Open sans", sans-serif;
+            font-weight: 800;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+
+            <header>
+                <h1>Meu APP</h1>
+            </header>
+
+            <section>
+
+                <form>
+                    <label>E-mail</label>
+                    <input type="text">
+
+                    <label>Senha</label>
+                    <input type="password">
+
+                    <a href="#">Recuperar senha</a>
+
+                    <button>Entrar</button>
+                </form>
+
+            </section>
+
+        </div>
+    </div>
+    
+</body>
+</html>

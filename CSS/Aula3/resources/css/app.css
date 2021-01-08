@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+}
+
+body {
+    background-color: #f1f1f1;
+}
+
+.avatar {
+    position: relative;
+}
+
+.avatar img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.avatar > h3 {
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.fg-green {
+    color: #009688;
+}
+
+.fg-gray {
+    color: #777;
+}
+
+.panel-content {
+   padding: 5px 15px; 
+}
+
+.item-width-icon {
+    line-height: 2.0;
+}
+
+.item-width-icon i {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.separator {
+    border: 1px solid #cfcfcf;
+    width: calc(100% - 40px);
+    margin: 20px auto;
+}
+
+.progressbar {
+    width: 100%;
+    margin: 0px auto;
+    border-radius: 15px;
+    height: 22px;
+    overflow: hidden;
+    background-color: rgb(207, 207, 207);
+}
+
+.progress-title {
+    margin: 20px 0px;
+    color: #757575;
+}
+
+[class|="inner-progressbar"] {
+    background-color: #009688;
+    color: #fff;
+    text-align: right;
+    padding-right: 10px;
+    border-radius: 15px;
+    height: 22px;
+}
+
+.inner-progressbar-90 {
+    width: 90%;
+}
+
+.inner-progressbar-80 {
+    width: 80%;
+}
+
+.inner-progressbar-75 {
+    width: 75%;
+}
+
+.inner-progressbar-50 {
+    width: 50%;
+}
+
+.inner-progressbar-70 {
+    width: 70%;
+}
+
+.inner-progressbar-60 {
+    width: 60%;
+}
+
+.inner-progressbar-30 {
+    width: 30%;
+}
+
+.card {
+    padding-bottom: 20px;
+    background-color: #fff;
+    margin: 20px 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0 #969696;
+}
+
+.title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #757575;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.subtitle {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color:#757575;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.date {
+    color: #009688;
+    line-height: 1.2;
+}
+
+.date i {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.date .active {
+    display: inline-block;
+    background-color: #009688;
+    color: #fff;
+    padding: 2px 7px;
+    border-radius: 5px;
+}
+
+.content {
+    margin: 15px 0px;
+    font-size: 0.9rem;
+    text-align: justify;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    background-color: #009688;
+}
+
+.footer-item {
+    padding-top: 20px;
+}
+
+.footer-item h4 {
+    color: white;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+@media screen and (min-width:601px) {
+    .col-left {
+        width: 30%;
+        /* float: left; */
+    }
+
+    .col-content {
+        width: 70%;
+        /* float: left; */
+    }
+
+    main {
+        display: flex;
+    }
+}

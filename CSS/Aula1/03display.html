@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 - Display</title>
+
+    <style>
+
+        .grupo {
+            border: 1px solid black;
+            height: 400px;
+            display: flex; /*desbloqueia as opções de justify-content e aling-items*/
+            flex-wrap: wrap;
+            justify-content: space-around; /* Alinhamento horizontal */
+            align-items: center; /* Alinhamento vertical */
+        }
+
+        .grupo div {
+            width: 300px;
+            height: 200px;
+            background-color: rgb(255, 166, 0);
+            border: 1px solid rgb(0, 17, 255);
+        }
+
+        /*
+            BLOCK: elementos ficam um abaixo do outro;
+
+            INLINE: elementos ficam um ao lado do outro, porém dimensões e 
+            margens (top e inferior) não funcionam;
+
+            INLINE-BLOCK:  elementos ficam um ao lado do outro e podem ter dimensões definidas, 
+            além de todas as margens;
+
+            FLEX: elementos flexíveis;
+        */
+
+    </style>
+
+</head>
+<body>
+
+    <div class="grupo">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+    
+</body>
+</html>
