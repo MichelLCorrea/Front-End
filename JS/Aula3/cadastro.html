@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Hello, world!</title>
+
+    <style>
+        .item {
+            color: white;
+        }
+    </style>
+
+  </head>
+
+  <body>
+
+    <h1>Lista de compras</h1>
+
+    <section style="width: 50vw;">
+        <div class="mb-3">
+            <label for="" class="form-label">Descrisão</label>
+            <input class="form-control" id="tfDescription">
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary" id="btnAdd">Adicionar</button>
+            <button class="btn btn-danger" id="btnRemove">Remover</button>
+        </div>
+    </section>
+
+    <section id="panel-list"></section>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <script>
+
+        const tarefas = []
+
+        // Adicionar item na lista
+        function saveHandler(event) {
+            // Buscar o input no DOM
+            let tfDescriptionEl = document.querySelector("#tfDescription")
+            
+            // Ler o valor digitado no input
+            const descricao = tfDescriptionEl.value
+
+            // IF = para ver se foi preenchido ou não o input
+            if(descricao.trim() != "") {
+            // Adicionar o valor digitado na lista
+            tarefas.push(descricao)
+
+            // Lipmar o input e limpar
+            tfDescriptionEl.value = ""
+
+            //Atualizar o DOM com as informações da lista
+            renderTarefas()
+
+            } else {
+                alert("Preencha todos os campos")
+            }
+            
+        }
+
+        // Remover item da lista
+        function removeHandler(event) {
+            // Pegar o input
+            let tfDescriptionEl = document.querySelector("#tfDescription")
+
+            // Pegar o texto que está no input
+            const descricao = tfDescriptionEl.value
+
+            // Verificar se o texto está na lista de tarefas
+            let posicao = tarefas.indexOf(descricao)
+            if(posicao < 0) {
+                alert("Tarefa não encontrada")
+            }else {
+                // Remover o texto da lista
+                tarefas.splice(posicao, 1)
+
+                // Atualizar a tela
+                renderTarefas()
+
+                // Limpar o texto
+                tfDescriptionEl.value = ""
+
+                // Mensagem de sucesso
+                setTimeout(() => {
+                    alert("Tarefa Removida com sucesso")
+                }, 1000)
+            }
+
+        }
+
+
+        function renderListaTarefas() {
+            const ulElement = document.createElement('ul')
+            for(let index = 0; index < tarefas.length; index++) {
+
+                // Criar um elemento 'li' 
+                const liElement = document.createElement('li')
+
+                // Atribuir o texto da tarefa atual à 'li'
+                liElement.innerText = tarefas[index]
+
+                // Vincular o 'li' com a lista 'ul'
+                ulElement.appendChild(liElement)
+            }
+
+            // Vincular o 'ul' com a 'section'
+            const sectionEl = document.querySelector('#panel-list')
+
+            // Procura a refencia para a lista antiga
+            const oldList = sectionEl.querySelector('ul')
+            if(oldList) {
+                // Apaga a lista antiga
+                oldList.remove()
+            }
+
+            // Adiciona a nova lista na section
+            sectionEl.appendChild(ulElement)
+        }
+
+
+        function renderTarefas() {
+            const divElement = document.createElement('div')
+
+            for(let i = 0; i < tarefas.length; i++) {
+                const pElement = document.createElement('p')
+
+                // Adiciona classe CCS no elemento
+                //pElement.classList.add('item')
+
+                // Adiciona um estilo no elemento 
+                //pElement.style.background = "brown"
+
+                pElement.innerText = tarefas[i]
+
+                divElement.appendChild(pElement)
+            }
+
+            const sectionEl = document.querySelector('#panel-list')
+
+            const oldDiv = sectionEl.querySelector('div')
+            if(oldDiv) {
+                oldDiv.remove()
+            }
+
+            sectionEl.appendChild(divElement)
+
+        }
+
+        // Criar uma referência do botão
+        let btnAddEl = document.querySelector("#btnAdd")
+        let btnRemoveEl = document.querySelector("#btnRemove")
+
+        // registrar o listener para o evento de click no botão
+        btnAddEl.addEventListener('click', saveHandler)
+        btnRemoveEl.addEventListener('click', removeHandler)
+
+    </script>
+
+  </body>
+</html>

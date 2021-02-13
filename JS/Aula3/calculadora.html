@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Calculadora</h1>
+    <label>Valor 1</label> <input id="value1"> <br>
+    <label>Valor 2</label> <input id="value2"> <br>
+
+    <h1 id="result">Resultado</h1>
+
+    <button id="btnSum"> + </button>
+
+    <button id="btnSubstract"> - </button>
+
+    <button id="btnMultiply"> x </button>
+
+    <button id="btnDivide"> / </button>
+
+    <button id="clear"> Limpar </button>
+
+    <script>
+
+        function calcularSoma(event) {
+            const valor1 = document.querySelector('#value1')
+            const valor2 = document.querySelector('#value2')
+
+            const num1 = parseFloat(valor1.value)
+            const num2 = parseFloat(valor2.value)
+            
+            let resultado = num1 + num2
+
+            let somar = document.querySelector('#result')
+            somar.innerHTML = resultado
+        }
+
+        function calcularSubtracao(event) {
+            const valor1 = document.querySelector('#value1')
+            const valor2 = document.querySelector('#value2')
+
+            const num1 = parseFloat(valor1.value)
+            const num2 = parseFloat(valor2.value)
+            
+            let resultado = num1 - num2
+
+            let subtracao = document.querySelector('#result')
+            subtracao.innerHTML = resultado
+        }
+
+        function calcularMultiplicacao(event) {
+            const valor1 = document.querySelector('#value1')
+            const valor2 = document.querySelector('#value2')
+
+            const num1 = parseFloat(valor1.value)
+            const num2 = parseFloat(valor2.value)
+            
+            let resultado = num1 * num2
+
+            let multiplicacao = document.querySelector('#result')            
+            multiplicacao.innerHTML = resultado
+        }
+
+        function calcularDivisao(event) {
+            const valor1 = document.querySelector('#value1')
+            const valor2 = document.querySelector('#value2')
+
+            const num1 = parseFloat(valor1.value)
+            const num2 = parseFloat(valor2.value)
+            
+            let resultado = num1 / num2
+            if(num2 > 0) {
+                let divisao = document.querySelector('#result')
+            
+                divisao.innerHTML = resultado
+            }else {
+                alert("Digite um número maior que zero")
+            }
+        }
+
+        function limparDados() {
+            const valor1 = document.querySelector('#value1')
+            const valor2 = document.querySelector('#value2')
+
+            const num1 = parseFloat(valor1.value)
+            const num2 = parseFloat(valor2.value)
+
+            let clear = document.querySelector('#result')
+            clear.innerText = "Resultado"
+            
+            valor1.value = ""
+            valor2.value = ""
+        }
+
+        
+
+        // Adição
+        const btnSumEl = document.querySelector("#btnSum")
+        btnSumEl.addEventListener('click', calcularSoma)
+
+        // Subtração
+        const btnSubEl = document.querySelector("#btnSubstract")
+        btnSubEl.addEventListener('click', calcularSubtracao)
+
+        // Multiplicação
+        const btnMultEl = document.querySelector("#btnMultiply")
+        btnMultEl.addEventListener('click', calcularMultiplicacao)
+
+        // Divisão
+        const btnDivisaoEl = document.querySelector("#btnDivide")
+        btnDivisaoEl.addEventListener('click', calcularDivisao)
+
+        // Limpar os dados
+        const btnClearEl = document.querySelector("#clear")
+        btnClearEl.addEventListener('click', limparDados)
+
+    </script>
+
+</body>
+</html>
