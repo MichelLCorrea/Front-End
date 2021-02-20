@@ -1,0 +1,22 @@
+{
+  "contatos": [
+    {
+      "id": 1,
+      "nome": "João",
+      "email": "joao@test.com",
+      "telefone": "33823904"
+    },
+    {
+      "id": 2,
+      "nome": "Maria",
+      "email": "marimari@test.com",
+      "telefone": "92382382"
+    },
+    {
+      "id": 3,
+      "nome": "Marcos",
+      "email": "marquinhos@gmail.com",
+      "telefone": "484294828"
+    }
+  ]
+}

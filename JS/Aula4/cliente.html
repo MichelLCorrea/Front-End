@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        * {
+            font-family: sans-serif;
+        }
+
+        #formCliente {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+        }
+
+        label, input, button {
+            height: 30px;
+            margin-top: 5px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1>Meus Clientes</h1>
+
+    <form id="formCliente">
+
+        <label>Código</label>
+        <input name="id" readonly>
+
+        <label>Cliente</label>
+        <input type="text" name="cliente">
+
+        <label>CPF</label>
+        <input type="number" name="cpf">
+
+        <button id="btnSalvar" type="submit">Salvar</button>
+
+    </form>
+
+    <div id="clientesListPanel">
+        <h1>Lista de clientes</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Cliente</th>
+                    <th>CPF</th>
+                </tr>
+            </thead>
+            <tbody id="clientesTableBody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+
+        let nextId = 1
+
+        class RepositorioCliente {
+            // Função contrutora para criar os produtos
+            constructor() {
+                this.clientes = []
+            }
+
+            inserir(cliente){
+                cliente.id = nextId++
+                this.clientes.push(cliente)
+            }
+
+            atualizar(cliente) {
+                this.clientes = this.clientes.map(clienteAtual => {
+                    if(clienteAtual.id === cliente.id) {
+                        return cliente
+                    }
+                    return clienteAtual
+                })
+            }
+
+            remover(id) {
+                this.clientes = this.clientes.filter(cliente => cliente.id !== id)
+            }
+
+            buscarProdutoPorId(id) {
+                const cliente = this.clientes.find(clienteAtual => clienteAtual.id === id)
+                if(cliente) {
+                    return {...cliente}
+                }
+                return null
+            }
+
+            buscarTodos() {
+                return [...this.clientes]
+            }
+        }
+
+        class Cliente {
+            constructor(id, nome, cpf) {
+                this.id = id
+                this.nome = nome
+                this.cpf = cpf
+            }
+        }
+
+        const repositorio = new RepositorioCliente()
+
+        // Função para salvar a lista de produtos
+        function onSalvarHandler(event) {
+            event.preventDefault()
+            // Foi criado as referencias dos inputs 
+            const idElement = document.querySelector('input[name="id"]')
+            const clienteElement = document.querySelector('input[name="cliente"]')
+            const cpfElement = document.querySelector('input[name="cpf"]')
+
+            const id = idElement.value ? parseInt(idElement.value) : null
+            const nome = clienteElement.value
+            const cpf = cpfElement.value ? parseFloat(cpfElement.value) : 0
+
+            // Limpar os inputs quando salvar
+            idElement.value = ""
+            clienteElement.value = ""
+            cpfElement.value = ""
+
+            const cliente = new Cliente(id, nome, cpf) 
+            if(cliente.id) {
+                repositorio.atualizar(cliente)
+            } else {
+                repositorio.inserir(cliente)
+            }
+
+            atualizarPainelClientes()
+        }
+
+        // Função para atualizar items da lista de produtos
+        function atualizarPainelClientes() {
+            let clientes = repositorio.buscarTodos()
+            const tableBody = document.querySelector('#clientesTableBody')
+            // Remover todos os elementos do body
+            for(let index = tableBody.childElementCount-1; index > -1; index--) {
+                 tableBody.children[index].remove()   
+                }
+            
+            // Loop para criar uma nova linha para cada item da lista
+            for(let i = 0;i < clientes.length; i++){
+                const clienteAtual = clientes[i]
+                // Criando uma tr para cada item
+                const tr = document.createElement('tr')
+
+                // Lincando o id com o td e o td com a tr
+                const tdCodigo = document.createElement('td')
+                tdCodigo.innerText = clienteAtual.id
+                tr.appendChild(tdCodigo)
+
+                // Lincando o nome do produto com o td e o td com a tr
+                const tdNome = document.createElement('td')
+                tdNome.innerText = clienteAtual.nome
+                tr.appendChild(tdNome)
+
+                // Lincando o preço com o td e o td com a tr
+                const tdCpf = document.createElement('td')
+                tdCpf.innerText = clienteAtual.cpf
+                tr.appendChild(tdCpf)
+
+                // Lincando a tr com os tds a tabela
+                tableBody.appendChild(tr)
+            }
+        }
+
+        // Foi criado uma referencia para o botão
+        const btnSalvar = document.querySelector('#btnSalvar')
+        // Adicionando a função de salvar o produto ao botão
+        btnSalvar.addEventListener('click', onSalvarHandler)
+
+    </script>
+
+</body>
+</html>

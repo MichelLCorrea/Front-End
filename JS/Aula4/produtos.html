@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        * {
+            font-family: sans-serif;
+        }
+
+        #formProduto {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+        }
+
+        label, input, button {
+            height: 30px;
+            margin-top: 5px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1>Meus Produtos</h1>
+
+    <form id="formProduto">
+
+        <label>Código</label>
+        <input name="id" readonly>
+
+        <label>Produto</label>
+        <input type="text" name="produto">
+
+        <label>Preço</label>
+        <input type="number" name="preco">
+
+        <label>Descrição</label>
+        <textarea name="descricao" id="" cols="30" rows="10"></textarea>
+
+        <button id="btnSalvar" type="submit">Salvar</button>
+
+    </form>
+
+    <div id="produtosListPanel">
+        <h1>Lista de produtos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody id="produtosTableBody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+
+        let nextId = 1
+
+        class RepositorioProduto {
+            // Função contrutora para criar os produtos
+            constructor() {
+                this.produtos = []
+            }
+
+            inserir(produto){
+                produto.id = nextId++
+                this.produtos.push(produto)
+            }
+
+            atualizar(produto) {
+                this.produtos = this.produtos.map(produtoAtual => {
+                    if(produtoAtual.id === produto.id) {
+                        return produto
+                    }
+                    return produtoAtual
+                })
+            }
+
+            remover(id) {
+                this.produtos = this.produtos.filter(produto => produto.id !== id)
+            }
+
+            buscarProdutoPorId(id) {
+                const produto = this.produtos.find(produtoAtual => produtoAtual.id === id)
+                if(produto) {
+                    return {...produto}
+                }
+                return null
+            }
+
+            buscarTodos() {
+                return [...this.produtos]
+            }
+        }
+
+        class Produto {
+            constructor(id, nome, preco, descricao) {
+                this.id = id
+                this.nome = nome
+                this.preco = preco
+                this.descricao = descricao
+            }
+        }
+
+        const repositorio = new RepositorioProduto()
+
+        // Função para salvar a lista de produtos
+        function onSalvarHandler(event) {
+            event.preventDefault()
+            // Foi criado as referencias dos inputs 
+            const idElement = document.querySelector('input[name="id"]')
+            const produtoElement = document.querySelector('input[name="produto"]')
+            const precoElement = document.querySelector('input[name="preco"]')
+            const descricaoElement = document.querySelector('textarea[name="descricao"]')
+
+            const id = idElement.value ? parseInt(idElement.value) : null
+            const nome = produtoElement.value
+            const preco = precoElement.value ? parseFloat(precoElement.value) : 0
+            const descricao = descricaoElement.value
+
+            // Limpar os inputs quando salvar
+            idElement.value = ""
+            produtoElement.value = ""
+            precoElement.value = ""
+            descricaoElement.value = ""
+
+            const estoque = new Produto(id, nome, preco, descricao) 
+            if(estoque.id) {
+                repositorio.atualizar(estoque)
+            } else {
+                repositorio.inserir(estoque)
+            }
+
+            atualizarPainelProdutos()
+        }
+
+        // Função para atualizar items da lista de produtos
+        function atualizarPainelProdutos() {
+            let produtos = repositorio.buscarTodos()
+            const tableBody = document.querySelector('#produtosTableBody')
+            // Remover todos os elementos do body
+            for(let index = tableBody.childElementCount-1; index > -1; index--) {
+                 tableBody.children[index].remove()   
+                }
+            
+            // Loop para criar uma nova linha para cada item da lista
+            for(let i = 0;i < produtos.length; i++){
+                const produtoAtual = produtos[i]
+                // Criando uma tr para cada item
+                const tr = document.createElement('tr')
+
+                // Lincando o id com o td e o td com a tr
+                const tdCodigo = document.createElement('td')
+                tdCodigo.innerText = produtoAtual.id
+                tr.appendChild(tdCodigo)
+
+                // Lincando o nome do produto com o td e o td com a tr
+                const tdNome = document.createElement('td')
+                tdNome.innerText = produtoAtual.nome
+                tr.appendChild(tdNome)
+
+                // Lincando o preço com o td e o td com a tr
+                const tdPreco = document.createElement('td')
+                tdPreco.innerText = produtoAtual.preco.toFixed(2)
+                tr.appendChild(tdPreco)
+
+                // Lincando a descrição com o td e o td com a tr
+                const tdDescricao = document.createElement('td')
+                tdDescricao.innerText = produtoAtual.descricao
+                tr.appendChild(tdDescricao)
+
+                // Lincando a tr com os tds a tabela
+                tableBody.appendChild(tr)
+            }
+        }
+
+        // Foi criado uma referencia para o botão
+        const btnSalvar = document.querySelector('#btnSalvar')
+        // Adicionando a função de salvar o produto ao botão
+        btnSalvar.addEventListener('click', onSalvarHandler)
+
+    </script>
+
+</body>
+</html>

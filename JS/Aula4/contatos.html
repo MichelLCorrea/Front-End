@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        #formContato {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+        }
+
+        label, input, button {
+            height: 30px;
+            margin-top: 5px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1>Meus contatos</h1>
+
+    <form id="formContato">
+
+        <label>Código</label>
+        <input name="id" readonly>
+
+        <label>Nome</label>
+        <input type="text" name="nome">
+
+        <label>E-mail</label>
+        <input type="email" name="email">
+
+        <label>Telefone</label>
+        <input type="text" name="telefone">
+
+        <button id="btnSalvar" type="submit">Salvar</button>
+
+    </form>
+
+    <div id="contatosListPanel">
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="contatosTableBody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+
+        let nextId = 1
+
+        class RepositorioContato {
+            constructor() {
+                this.contatos = []
+            }
+
+            inserir(contato){
+                contato.id = nextId++
+                this.contatos.push(contato)
+            }
+
+            atualizar(contato) {
+                this.contatos = this.contatos.map(contatoAtual => {
+                    if(contatoAtual.id === contato.id) {
+                        return contato
+                    }
+                    return contatoAtual
+                })
+            }
+
+            remover(id) {
+                this.contatos = this.contatos.filter(contato => contato.id !== id)
+            }
+
+            buscarContatoPorId(id) {
+                const contato = this.contatos.find(contatoAtual => contatoAtual.id === id)
+                if(contato) {
+                    return {...contato}
+                }
+                return null
+            }
+
+            buscarTodos() {
+                return [...this.contatos]
+            }
+
+        }
+
+        class Contato {
+            constructor(id, nome, email, telefone) {
+                this.id = id
+                this.nome = nome
+                this.email = email
+                this.telefone = telefone
+            }
+        }
+
+        const repositorio = new RepositorioContato()
+
+        function onSalvarHandler(event) {
+            event.preventDefault()
+            const idElement = document.querySelector('input[name="id"]')
+            const nomeElement = document.querySelector('input[name="nome"]')
+            const emailElement = document.querySelector('input[name="email"]')
+            const telefoneElement = document.querySelector('input[name="telefone"]')
+            const id = idElement.value ? parseInt(idElement.value) : null
+            const nome = nomeElement.value
+            const email = emailElement.value
+            const telefone = telefoneElement.value
+
+            idElement.value = ""
+            nomeElement.value = ""
+            emailElement.value = ""
+            telefoneElement.value = ""
+
+            const contato = new Contato(id, nome, email, telefone) 
+            if(contato.id) {
+                repositorio.atualizar(contato)
+            } else {
+                repositorio.inserir(contato)
+            }
+
+            atualizarPainelContatos()
+        }
+
+        function atualizarPainelContatos() {
+            let contatos = repositorio.buscarTodos()
+            const tableBody = document.querySelector('#contatosTableBody')
+            // Remover todos os elementos do body
+            for(let index = tableBody.childElementCount-1; index > -1; index--) {
+                 tableBody.children[index].remove()   
+                }
+
+            for(let i = 0;i < contatos.length; i++){
+                const contatoAtual = contatos[i]
+                // Para cada contato da lista eu preciso criar um novo tr com os seus tds
+                const tr = document.createElement('tr')
+
+                const tdCodigo = document.createElement('td')
+                tdCodigo.innerText = contatoAtual.id
+                tr.appendChild(tdCodigo)
+
+                const tdNome = document.createElement('td')
+                tdNome.innerText = contatoAtual.nome
+                tr.appendChild(tdNome)
+
+                const tdEmail = document.createElement('td')
+                tdEmail.innerText = contatoAtual.email
+                tr.appendChild(tdEmail)
+
+                const tdTelefone = document.createElement('td')
+                tdTelefone.innerText = contatoAtual.telefone
+                tr.appendChild(tdTelefone)
+
+                const tdAcoes = document.createElement('td')
+                //Todo adicionar a botão de editar e remover
+                tr.appendChild(tdAcoes)
+
+                // Adiciona linha na tabela
+                tableBody.appendChild(tr)
+            }
+        }
+
+        const btnSalvar = document.querySelector('#btnSalvar')
+        btnSalvar.addEventListener('click', onSalvarHandler)
+
+    </script>
+
+</body>
+</html>
