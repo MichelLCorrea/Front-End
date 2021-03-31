@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.panel {
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+}
+
+.panel form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel label, .panel input, .panel button {
+    width: 100%;
+    height: 30px;
+    margin: 5px 10px;
+}
+
+.panel-table {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+}
+
+.panel-table h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.panel-table th {
+    text-align: left;
+}
+
+.panel-table table {
+    padding: 0;
+}
+
+.panel-table table tr {
+    height: 35px;
+    margin: 0;
+}
+
+.panel-table table thead th {
+    background-color: #777;
+    color: #fff;
+    padding: 5px 10px;
+}
+
+.panel-table table tbody tr > td {
+    padding: 5px 10px;
+}
+
+.panel-table table tbody tr:nth-child(even) > td {
+    background-color: #afafaf;
+}
+
+.btn-edit {
+    background-color: rgb(14, 236, 181);
+    border: 2px solid rgb(14, 236, 181);
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 15px;
+    transition: .2s;
+    cursor: pointer;
+}
+ 
+.btn-edit:hover {
+    background-color: rgb(17, 128, 100);
+    border: 2px solid rgb(17, 128, 100);
+    cursor: pointer;
+}
+
+.btn-delete {
+    border: 2px solid red;
+    background-color: #fff;
+    padding: 10px;
+    color: red;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: .2s;
+    cursor: pointer
+}
+
+.btn-delete:hover {
+    background-color: red;
+    color: #fff;
+}

@@ -1,0 +1,23 @@
+{
+  "contatos": [],
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Caneta",
+      "preco": "2.50",
+      "descricao": "Caneta Bic - Azul"
+    },
+    {
+      "id": 2,
+      "nome": "Lapis",
+      "preco": "1.50",
+      "descricao": "Lapis comum "
+    },
+    {
+      "id": 3,
+      "nome": "Borracha",
+      "preco": "1.99",
+      "descricao": "Barracha para apagar lapis comum"
+    }
+  ]
+}
