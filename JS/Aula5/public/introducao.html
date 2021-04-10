@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .card {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #777;
+            border-radius: 15px;
+            margin: 5px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="root"></div>
+    
+    <input type="text" id="txName" style="height: 30px;font-size: 20px;min-width: 300px;">
+    <h1 id="title"></h1>
+
+    <div class="card">
+        <h3></h3>
+    </div>
+
+    <div class="card">
+        <h3></h3>
+    </div>
+
+    <div class="card">
+        <h3></h3>
+    </div>
+
+    <div class="card">
+        <h3></h3>
+    </div>
+
+    <div class="card">
+        <h3></h3>
+    </div>
+
+    <script>
+
+        class LineItem{
+            constructor(image, content){
+                this.image = image
+                this.content = content
+
+                this.render = this.render.bind(this)
+            }
+
+            setContent(content) {
+                this.elContainer.querySelector('p').innerText = content
+            }
+
+            render(owner) {
+                this.elContainer = document.createElement('div')
+                this.elContainer.style.display="flex"
+                this.elContainer.style.width="100%"
+                
+                const img = document.createElement('img')
+                img.src=this.image
+                img.style.width="50px"
+                img.style.height="50px"
+
+                const content = document.createElement('p')
+                content.innerText = this.content
+
+                this.elContainer.appendChild(img)
+                this.elContainer.appendChild(content)
+
+                owner.appendChild(this.elContainer)
+            }
+        }
+
+        const root = document.getElementById('root')
+        const txNome = document.getElementById('txName')
+        const title = document.getElementById('title')
+
+        const line1 = new LineItem('resources/images/image1.svg', 'item 01')
+        const line2 = new LineItem('resources/images/image2.svg', 'item 02')
+        const line3 = new LineItem('resources/images/image3.svg', 'item 03')
+
+        txNome.addEventListener('input', (event) => {
+            title.innerText = event.target.value
+            const elements = document.querySelectorAll('.card > h3')
+            for(let i = 0; i < elements.length;i++) {
+                elements[i].innerText = event.target.value
+            }
+
+            line1.setContent(event.target.value)
+        })
+
+        
+
+        line1.render(root)
+        line2.render(root)
+        line3.render(root)
+
+    </script>
+
+</body>
+</html>

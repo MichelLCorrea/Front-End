@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    
+    <script>
+
+        function Image(props) {
+            return React.createElement('img', {src:props.image, style:{width:"50px"}}, null)
+        }
+
+        function Content(props) {
+            return React.createElement('p', null, props.content)
+        }
+
+        class LineItem extends React.Component{
+            render() {
+                const image = Image(this.props)
+                const content = Content(this.props)
+                return React.createElement('div',{content:this.props.content, image:this.props.image},[image, content])
+            }
+        }
+
+        const element = React.createElement(LineItem, { content: "Michel", image:'resources/images/image1.svg' }, null)
+        ReactDOM.render(
+            element,
+            document.getElementById('root')
+        )
+ 
+    </script>
+    
+</body>
+</html>
