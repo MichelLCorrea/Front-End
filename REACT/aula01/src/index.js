@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import image from './image1.svg'
 import mercedes from './images/mercedes.png'
 import AwesomeIcon from './components/AwesomeIcon'
 import {LineItem} from './components/LineItem'
@@ -14,7 +13,7 @@ import forest from './images/forest.jpg'
 
 import {Clock} from './components/Clock'
 
-import {ContactPage} from './pages/contacts/ContactsPage'
+import {AppRouter} from './router'
 
 function multiplicar(n1, n2) {
   return n1 * n2
@@ -74,7 +73,7 @@ ReactDOM.render(
     
   */}
 
-    <ContactPage />
+    <AppRouter />
 
   </div>,
 

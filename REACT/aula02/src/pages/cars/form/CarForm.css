@@ -1,0 +1,13 @@
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  width: 600px;
+  margin: 10px auto;
+}
+
+.contact-form label, .contact-form input, .contact-form button {
+  height: 30px;
+  width: 100%;
+  margin-bottom: 10px;
+}

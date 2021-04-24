@@ -1,0 +1,18 @@
+.list-item {
+  display: flex;
+  width: 800px;
+  height: 100px;
+  border: 1px solid black;
+  align-items: center;
+}
+
+.list-item__title {
+  text-align: center;
+  font-size: 64px;
+  font-family: sans-serif;
+  flex-grow: 1;
+}
+
+.list-item .avatar {
+  width: 100px;
+}
